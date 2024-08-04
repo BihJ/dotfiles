@@ -22,3 +22,6 @@ if [[ "$answer" =~ ^[Yy]$ ]]; then
 else
     echo "Aight. No dotfiles then."
 fi
+
+nvm install --lts
+nvm use --lts
