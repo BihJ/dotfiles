@@ -36,7 +36,8 @@ fi
 brew bundle --file=.Brewfile
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-
+nvm install --lts
+nvm use --lts
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
