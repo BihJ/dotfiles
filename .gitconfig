@@ -41,9 +41,9 @@
 [push]
 	default = current # http://stackoverflow.com/a/23918418/89484
 [user]
-	email = giulio.nf@googlemail.com
-	name = Giulio Neusch-Frediani
-	signingkey = 761E70A00788B2B1
+	email = juliusfranzbihler@gmail.com
+	name = Julius Bihler
+	signingkey = 59FA9F2AEB733120
 ; [merge]
 ; 	conflictStyle = diff3
 [commit]
