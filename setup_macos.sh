@@ -231,45 +231,6 @@ defaults write com.apple.dock wvous-tr-corner -int 2
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
 ###############################################################################
-# Safari & WebKit                                                             #
-###############################################################################
-
-# Privacy: don’t send search queries to Apple
-defaults write com.apple.Safari UniversalSearchEnabled -bool false
-defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
-# Show the full URL in the address bar (note: this still hides the scheme)
-defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# Disable auto-correct
-defaults write com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
-
-# Disable AutoFill
-defaults write com.apple.Safari AutoFillFromAddressBook -bool false
-defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AutoFillCreditCardData -bool false
-defaults write com.apple.Safari AutoFillMiscellaneousForms -bool false
-
-# Warn about fraudulent websites
-defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-# Disable plug-ins
-defaults write com.apple.Safari WebKitPluginsEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
-
-# Disable Java
-defaults write com.apple.Safari WebKitJavaEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
-
-# Block pop-up windows
-defaults write com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
-defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
-
-# Enable “Do Not Track”
-defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-
-###############################################################################
 # Mail                                                                        #
 ###############################################################################
 
