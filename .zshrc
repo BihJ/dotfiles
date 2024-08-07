@@ -1,18 +1,14 @@
+# Set ZSH to the oh-my-zsh directory
 export ZSH="$HOME/.oh-my-zsh"
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Running on MacOS
-  source ~/.macos
-else
-  # Add non-macos stuff here.
-fi
+# Source macOS specific configuration
+[[ "$OSTYPE" == "darwin"* ]] && source ~/.macos
 
-# Powerlevel 10k custom theme
+# Powerlevel10k custom theme configuration
 ZSH_THEME="powerlevel10k/powerlevel10k"
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+P10K_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+[[ -r "$P10K_CACHE" ]] && source "$P10K_CACHE"
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Enable installed plugins
 plugins=(
@@ -27,44 +23,24 @@ plugins=(
     zsh-syntax-highlighting
 )
 
-# Some collection dotfiles
-source ~/.functions
-source ~/.aliases
-source ~/.env
-source ~/.custom
+# Source collection of dotfiles
+for file in ~/.{functions,aliases,env,custom}; do
+  [[ -f $file ]] && source $file
+done
 
+# Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting web-search)
-
-source $ZSH/oh-my-zsh.sh
-
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/juliusbihler/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# Conda initialization
+__conda_setup="$("$HOME/miniconda3/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/juliusbihler/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/juliusbihler/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/juliusbihler/miniconda3/bin:$PATH"
-    fi
+    CONDA_SH="$HOME/miniconda3/etc/profile.d/conda.sh"
+    [[ -f "$CONDA_SH" ]] && source "$CONDA_SH" || export PATH="$HOME/miniconda3/bin:$PATH"
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
-
-nvm install --lts
-nvm use --lts
+# Install and use Node.js LTS version
+nvm install --lts > /dev/null 2>&1
+nvm use --lts > /dev/null 2>&1

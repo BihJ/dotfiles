@@ -32,8 +32,8 @@ video_mute_all() {
 
 
 video_annotate() {
-/opt/homebrew/bin/ffmpeg -i "$1" -vf drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf:text='%{localtime}':fontcolor=white@0.8:x=7:y=7
-"${1%.*}-timestamped.mp4"
+    /opt/homebrew/bin/ffmpeg -i "$1" -vf drawtext=fontfile=/usr/share/fonts/truetype/freefont/FreeMonoBold.ttf:text='%{localtime}':fontcolor=white@0.8:x=7:y=7
+    "${1%.*}-timestamped.mp4"
 }
 
 
