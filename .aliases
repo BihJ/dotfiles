@@ -12,3 +12,15 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 alias flutter="fvm flutter"
 alias dart="fvm dart"
+
+alias whoruns='ps aux | grep "[a]utocrane-core_main"'
+alias whorunsnodes='ps aux | grep "[s]ensornode"'
+alias whobuilds='ps aux | grep "[m]ake" | tr -s " " | cut -d " " -f1 | uniq'
+alias killnodes='ps aux | grep sensornode | tr -s " " | cut -d " " -f2 | xargs sudo kill -9'
+alias killcore='ps aux | grep autocrane-core_main | tr -s " " | cut -d " " -f2 | xargs sudo kill -9'
+
+alias cssh='~/opt/bin/tmux-cssh'
+
+alias mastercontrol_portal="ulimit -n 1000 && ./mastercontrol -f ../config/crane_portal/Releases/core-production.yml"
+alias mastercontrol_kemi_north="ulimit -n 1000 && ./mastercontrol -f ../config/crane_kemi/Releases/core-production-north.yml"
+alias mastercontrol_kemi_south="ulimit -n 1000 && ./mastercontrol -f ../config/crane_kemi/Releases/core-production-south.yml"
